@@ -1,0 +1,19 @@
+.data{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.6rem;
+    font-style: oblique;
+}
+
+button{
+    border-radius:  6rem;
+    width: 9rem;
+    height: 4rem;
+    font-size: 1.4rem;
+}
+button:hover{
+    background-color: lightblue;
+    transition: 1s;
+}

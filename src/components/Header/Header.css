@@ -1,0 +1,12 @@
+h1 {
+    font-size: 5rem;
+}
+h2 {
+    font-size: 3rem;
+}
+.header{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
