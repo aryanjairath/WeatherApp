@@ -1,0 +1,6 @@
+node_modules/
+
+# Ignore cache directories
+.cache/
+dist/
+build/
