@@ -1,0 +1,26 @@
+h1 {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.daycontainer{
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    flex-direction: row;
+    grid-template-columns: repeat(5, 1fr); /* Creates 4 columns */
+
+}
+.day{
+    
+    background-color: lightgray;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 2rem;
+
+}
+
+.day:hover{
+    scale: 1.1;
+    transition: 1s;
+}
