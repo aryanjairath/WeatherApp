@@ -8,20 +8,24 @@ import { LuThermometerSnowflake } from 'react-icons/lu';
 const WeatherDisplay = ({data}) => {
     
     const [degree, setDegree] = useState('Celsius')
-    const [temp, setTemp] = useState(data?.temp || 0);
+    const [feelslike, setFeelsLike] = useState('Celsius')
+    const [temp, setTemp] = useState(data?.temp || '');
     useEffect(() => {
         if (data?.temp !== undefined) {
             setTemp(data.temp);
+            setFeelsLike(data.feelslike)
         }
     }, [data?.temp]); // Dependency on data.temp
 
     const handleDegree = () => {
         if (degree === 'Celsius') {
             setDegree('Fahrenheit');
+            setFeelsLike((feelslike * 9/5) + 32);
             setTemp((temp * 9/5) + 32); // Convert to Fahrenheit
         } else {
             setDegree('Celsius');
             setTemp(data.temp); // Reset to Celsius
+            setFeelsLike(data.feelslike)
         }
     };
 
@@ -39,10 +43,11 @@ const WeatherDisplay = ({data}) => {
             <div className = 'data'>
                 <h3>Conditions: {data.conditions}</h3> {back(data.conditions)}
                 <h3>{<FaThermometerEmpty/>}Temperature: {temp}</h3>
-                <h3>{<LuThermometerSnowflake/>} Feels Like: {data.feelslike}</h3>
+                <h3>{<LuThermometerSnowflake/>} Feels Like: {feelslike}</h3>
                 <h3>{<WiHumidity />}Humidity: {data.humidity}%</h3>
+                <button onClick = {handleDegree}>Convert to {degree === 'Celsius' ? 'Farenheit' : 'Celsius'} </button>
+
             </div>
-            <button onClick = {handleDegree}>Convert to {degree === 'Celsius' ? 'Farenheit' : 'Celsius'} </button>
         </div>
     )
 }
