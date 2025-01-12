@@ -11,10 +11,9 @@ const App = () => {
   const[weatherData, setWeatherData] = useState([])
   const fetchWeather = async (city) => {
     try{
-      const response = await axios.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=metric&key=LXFZWTASLFAVQ2QD5BZGP2UPC&contentType=json`)
-      setWeatherData(response.data.currentConditions)
+      const response =  await axios.get(`http://localhost:5000/api/weather/${city}`)
+      setWeatherData(response.data)
       setCit(city)
-      console.log(response.data.currentConditions)
     }
     catch (err){
       setCit('City/Zip Code does not exist')

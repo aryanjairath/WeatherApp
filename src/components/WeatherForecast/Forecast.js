@@ -49,6 +49,7 @@ const Forecast = () => {
     return (
         <div >
             <h1>Weather Forecast for: {loc}</h1>
+            <h2 style ={{textAlign:'center'}}>15 Day Weather </h2>
             <div className='daycontainer'>
             {data.map((day, index) => (
                 <div key={index}>

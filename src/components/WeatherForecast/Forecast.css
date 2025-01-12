@@ -11,14 +11,16 @@ h1 {
     grid-template-columns: repeat(5, 1fr); /* Creates 4 columns */
 
 }
-.day{
-    
+.day {
     background-color: lightgray;
     padding: 1rem;
     margin: 1rem;
     border-radius: 2rem;
-
-}
+    width: 80%; /* or whatever width you want */
+    height: 160px; /* fixed height */
+    /* etc. */
+  }
+  
 
 .day:hover{
     scale: 1.1;
