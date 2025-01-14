@@ -9,7 +9,7 @@ const News = ( ) => {
     useEffect( () => {
         async function fetchData (){
 
-            const val = `https://newsdata.io/api/1/latest?apikey=pub_64479109ea6b5b9cbdd1db384d1b4f6873663&q=${loc}&language=en`
+            const val = `http://localhost:5000/api/news/${loc}`
             try {
                 const response = await axios.get(val);
                 setData(response.data.results || []);

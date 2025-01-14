@@ -5,6 +5,9 @@ import Header from './components/Header/Header'
 import WeatherDisplay from './components/Display/WeatherDisplay';
 import { useState } from 'react';
 import Forecast from './components/WeatherForecast/Forecast';
+import News from './components/News/News';
+import Signup from './components/Sign/Signup';
+import Login from './components/Log/Login';
 const App = () => {
 
   const[cit, setCit] = useState('')
@@ -31,8 +34,12 @@ const App = () => {
           <WeatherDisplay data={weatherData} />
           </>
         }/>
-       
+        <Route path = '/signup' element = {<Signup />} />
+        <Route path = '/login' element = {<Login />} />
+
         <Route path = '/forecast/:loc' element = {<Forecast />} />
+        <Route path = '/news/:loc' element = {<News />} />
+
         </Routes>
       </BrowserRouter>
     </div>

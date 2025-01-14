@@ -5,6 +5,7 @@ const cors = require('cors'); // If you need CORS for local dev
 app.use(cors()); // only if needed for development
 
 const expressListEndpoints = require('express-list-endpoints');
+const { useParams } = require('react-router-dom');
 
 
 const API_KEY = 'LXFZWTASLFAVQ2QD5BZGP2UPC';
@@ -18,9 +19,6 @@ app.get('/api/weather/:city', async (req, res) => {
 
     const response = await axios.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${encodedCity}?unitGroup=metric&key=LXFZWTASLFAVQ2QD5BZGP2UPC&contentType=json`)
 
-
-    // Just sending back the `currentConditions` portion,
-    // but you can send the entire response if desired
     res.json(response.data.currentConditions);
   } catch (error) {
     console.error('Error fetching weather data:', error.message);
@@ -28,6 +26,17 @@ app.get('/api/weather/:city', async (req, res) => {
   }
 });
 
+app.get('/api/news/:loc', async (req, res) => {
+  const { loc } = req.params;
+  
+  try{
+    const response = await axios.get(`https://newsdata.io/api/1/latest?apikey=pub_64479109ea6b5b9cbdd1db384d1b4f6873663&q=${loc}&language=en`);
+    res.json(response.data)
+  } catch(error) {
+    console.error('Error fetching news', error.message);
+    res.status(500).json({error: 'Failed to fetch news' });
+  }
+});
 // Start the server on port 5000 (or your choice)
 const PORT = 5000;
 app.listen(PORT, () => {
